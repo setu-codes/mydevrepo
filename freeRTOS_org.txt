@@ -1,0 +1,13 @@
+mutex
+Mutexes are binary semaphores that include a priority inheritance mechanism.
+mutex work with 'take' token, 'give' token manner. Token is for the shared resource.
+priority inheritance - if a high priority task is ready and blocked by low priority task 
+who has token, priority gets inverted. To resolve this, low priority task's priority is
+raised equal to blocked high priority task. This helps blocked task to get token and 
+cpu execution time when next scheduler runs.
+Priority inheritance does not cure priority inversion! It just minimises its effect in some situations. 
+Hard real time applications should be designed such that priority inversion does not happen in the first place.
+Mutexes should not be used from an interrupt because: An interrupt cannot be blocked for 
+a resource, that is guarded by a mutex, to become available.
+
+
